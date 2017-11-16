@@ -1,5 +1,5 @@
 <template>
-  <div id="user_login">
+  <div id="regiter_page">
     <el-row>
       <el-col :span="8" :offset="4">
         <img class="login-img" src="../../../static/img/cover.jpg" alt="后台管理系统">
@@ -13,39 +13,42 @@
             <el-form-item label="" prop="password">
               <el-input class="input-item" v-model="register_form.password" type="password"  placeholder="请输入密码"></el-input>
             </el-form-item>
+            <el-form-item label="" prop="password">
+              <el-input class="input-item" v-model="register_form.password_again" type="password"  placeholder="请再次输入密码"></el-input>
+            </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('register_form')">提交</el-button>
-              <el-button @click="resetForm('register_form')">重置</el-button>
+              <el-button type="primary" @click="submitForm('register_form')">注册</el-button>
+              <el-button @click="toLogin()">登录>></el-button>
             </el-form-item>
           </el-form>
 
         </div>
       </el-col>
     </el-row>
-
   </div>
-
 </template>
 
 <script>
   export default{
-      data(){
-          return{
-            register_form:{
-              user_name:'',
-              password:'',
-            }
-          }
-      },
+    data(){
+      return{
+        register_form:{
+          user_name:'',
+          password:'',
+          password_again:''
+        }
+      }
+    },
     methods:{
-      submitForm(refEle){//表单提交
+      submitForm(){
         this.$axios.post('/users/user_register',this.register_form);
       },
-      resetForm(refEle){//表单重置
-        this.$refs[refEle].resetFields();
+      toLogin(){//返回登录
+        this.$router.push({name:'login'})
       }
     }
   }
+
 </script>
 
 <style scoped>
@@ -59,4 +62,5 @@
   .input-item{
     margin-top: 20px;
   }
+
 </style>
