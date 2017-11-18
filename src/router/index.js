@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '@/components/login/index.vue'
-import register from '@/components/register/index.vue'
+import login from '@/pages/login/index.vue'
+import register from '@/pages/register/index.vue'
+import index from '@/pages/index/index.vue'
 
 Vue.use(Router)
 
@@ -14,10 +15,15 @@ export default new Router({
       meta:'登录'
     },
     {
-      path: 'register',
+      path: '/register',
       name: 'register',
       component: register,
       meta:'注册'
+    },{
+      path: '/index',
+      name: 'index',
+      component: index,
+      meta:'首页'
     }
   ]
 })

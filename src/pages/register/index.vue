@@ -1,5 +1,5 @@
 <template>
-  <div id="regiter_page">
+  <div id="regiter_page" class="register-page">
     <el-row>
       <el-col :span="8" :offset="4">
         <img class="login-img" src="../../../static/img/cover.jpg" alt="后台管理系统">
@@ -62,5 +62,7 @@
   .input-item{
     margin-top: 20px;
   }
-
+.register-page{
+  margin-top: 60px;
+}
 </style>

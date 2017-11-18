@@ -1,5 +1,5 @@
 <template>
-  <div id="login_page">
+  <div id="login_page" class="login-page">
     <el-row>
       <el-col :span="8" :offset="4">
         <img class="login-img" src="../../../static/img/cover.jpg" alt="后台管理系统">
@@ -39,7 +39,8 @@
       },
     methods:{
       submitForm(refEle){//表单提交
-        this.$axios.post('/users/user_login',this.register_form);
+//        this.$axios.post('/users/user_login',this.register_form);
+        this.$router.push({name:'index'})
       },
       toRegister(){//表单重置
         this.$router.push({name:'register'})
@@ -58,5 +59,8 @@
   }
   .input-item{
     margin-top: 20px;
+  }
+  .login-page{
+    margin-top: 60px;
   }
 </style>
