@@ -1,0 +1,21 @@
+@charset "utf-8";
+.panel{
+  border-radius: 6px;
+}
+.panel-header{
+  font-size: 18px;
+  background: #305B7B;
+  color: #fff;
+  line-height: 60px;
+  padding: 0 20px;
+  border: 1px solid #E6EBF5;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.panel-body{
+  padding: 20px;
+}
+.panel-footer{
+  padding: 0 20px;
+  background: #F2F2F2;
+}

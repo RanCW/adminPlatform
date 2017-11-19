@@ -3,14 +3,17 @@
     <navHeader></navHeader>
     <el-row>
       <!--左边菜单栏start-->
-      <el-col :span="4" class="left-menu">
-        <asideMenu></asideMenu>
+      <el-col :span="3">
+        <div class="left-menu">
+          <asideMenu></asideMenu>
+        </div>
       </el-col>
       <!--左边菜单栏end-->
       <!--右边内容区start-->
-      <el-col :span="20">
-        这里是右边的内容区
+      <el-col :span="21">
+        <router-view>
 
+        </router-view>
 
       </el-col>
       <!--右边内容区end-->
@@ -18,6 +21,7 @@
     <!--底部start-->
     <div>
       这里页面的底部
+
 
 
     </div>
@@ -35,9 +39,7 @@
       asideMenu
     },
     data() {
-      return {
-
-      }
+      return {}
     }
 
   };
