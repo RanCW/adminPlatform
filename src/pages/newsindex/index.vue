@@ -6,6 +6,7 @@
         新闻资讯
 
 
+
       </div>
       <div slot="body">
         <div class="search-bar">
@@ -52,17 +53,20 @@
               size="mini"
               @click="handleDetail(scope.$index, scope.row)">查看
 
+
             </el-button>
             <el-button
               size="mini"
               type="primary"
               @click="handleEdit(scope.$index, scope.row)">编辑
 
+
             </el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除
+
 
             </el-button>
           </template>
@@ -85,11 +89,30 @@
       :visible.sync="editModal"
       width="600">
       <div>
-        这里是body部分的内容
+        <el-form
+          :model="newsForm"
+          label-width="120px">
+          <el-form-item label="标题">
+            <el-input v-model="newsForm.title" placeholder="请输入文章标题"></el-input>
+          </el-form-item>
+          <el-form-item label="作者">
+            <el-input v-model="newsForm.auth" placeholder="请输入作者"></el-input>
+          </el-form-item>
+          <el-form-item label="排序">
+            <el-input v-model="newsForm.sort" placeholder="请输入排序号"></el-input>
+          </el-form-item>
+          <el-form-item label="简介">
+            <el-input type="textarea" v-model="newsForm.abstract" placeholder="请输入简介"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input :autosize="contentSize" type="textarea" v-model="newsForm.content" placeholder="请输入内容"></el-input>
+          </el-form-item>
+
+        </el-form>
       </div>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="editModal = false">取 消</el-button>
-        <el-button type="primary" @click="editModal = false">确 定</el-button>
+        <el-button @click="handleCancleEdit">取 消</el-button>
+        <el-button type="primary" @click="handleSureEdit">确 定</el-button>
       </div>
     </el-dialog>
     <!--新闻资讯新增编辑弹出框end-->
@@ -105,6 +128,16 @@
     data(){
       return {
         keywords: '',
+        contentSize:{
+          minRows: 5
+        },//编辑内容框的配置项
+        newsForm: {
+          title: '',
+          auth: '冉成伟',
+          sort: 1,
+          content:'',
+          abstract:''
+        },
         tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -131,7 +164,7 @@
       },
       openEditDialog(){
         console.log('sss');
-        this.editModal=true;
+        this.editModal = true;
       },
       handleDetail(index, row){//查看
         console.log(index, row)
@@ -144,6 +177,12 @@
       },
       changeListPage(page){//分页
         console.log(page)
+      },
+      handleCancleEdit(){//取消编辑
+        this.editModal=false;
+      },
+      handleSureEdit(){//确认编辑
+        this.editModal=false;
       }
     }
   }

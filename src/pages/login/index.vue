@@ -39,8 +39,12 @@
       },
     methods:{
       submitForm(refEle){//表单提交
-//        this.$axios.post('/users/user_login',this.register_form);
-        this.$router.push({name:'newsIndex'})
+        this.$axios.post('/users/user_login',this.register_form).then(res=>{
+            console.log(res)
+          if (res.data.state=='1'){
+            this.$router.push({name:'newsIndex'})
+          }
+        });
       },
       toRegister(){//表单重置
         this.$router.push({name:'register'})
