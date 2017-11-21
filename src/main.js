@@ -8,11 +8,10 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(Element)
 //引入elementUI end
-//引入axios start
-import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:3000';
-Vue.prototype.$axios = axios
-//引入axios end
+//封装axios
+import {https }from './common/http'
+Vue.prototype.$httpAjax = https
+//封装axios end
 
 
 Vue.config.productionTip = false

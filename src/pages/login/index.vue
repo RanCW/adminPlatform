@@ -39,8 +39,11 @@
       },
     methods:{
       submitForm(refEle){//表单提交
-        this.$axios.post('/users/user_login',this.register_form).then(res=>{
-            console.log(res)
+        this.$httpAjax({
+          url:'/users/user_login',
+          method:'post',
+          data:this.register_form
+        }).then(res=>{
           if (res.data.state=='1'){
             this.$router.push({name:'newsIndex'})
           }

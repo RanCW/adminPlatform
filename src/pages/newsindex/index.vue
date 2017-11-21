@@ -5,8 +5,6 @@
       <div slot="header">
         新闻资讯
 
-
-
       </div>
       <div slot="body">
         <div class="search-bar">
@@ -54,6 +52,7 @@
               @click="handleDetail(scope.$index, scope.row)">查看
 
 
+
             </el-button>
             <el-button
               size="mini"
@@ -61,11 +60,13 @@
               @click="handleEdit(scope.$index, scope.row)">编辑
 
 
+
             </el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除
+
 
 
             </el-button>
@@ -128,15 +129,15 @@
     data(){
       return {
         keywords: '',
-        contentSize:{
+        contentSize: {
           minRows: 5
         },//编辑内容框的配置项
         newsForm: {
           title: '',
           auth: '冉成伟',
           sort: 1,
-          content:'',
-          abstract:''
+          content: '',
+          abstract: ''
         },
         tableData: [{
           date: '2016-05-02',
@@ -179,10 +180,19 @@
         console.log(page)
       },
       handleCancleEdit(){//取消编辑
-        this.editModal=false;
+        this.editModal = false;
       },
       handleSureEdit(){//确认编辑
-        this.editModal=false;
+        let obj = {
+          url: '/news/add_news',
+          method:'post',
+          data:this.newsForm
+        }
+        console.log(obj);
+        this.$httpAjax(obj).then(res=>{
+            console.log(res);
+            this.editModal=false;
+        })
       }
     }
   }
