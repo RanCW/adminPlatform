@@ -4,6 +4,7 @@
 //引入axios start
 import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.withCredentials = true;
 //引入axios end
 let querystring = require('querystring')
 export let https = (param) => {
