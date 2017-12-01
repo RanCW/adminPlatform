@@ -30,18 +30,26 @@
         border
         class="table-response">
         <el-table-column
-          prop="date"
+          prop="title"
           width="220"
-          label="添加日期">
+          label="标题">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="auth"
           width="220"
           label="作者">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="简介">
+          prop="sort"
+          label="排序号">
+        </el-table-column>
+        <el-table-column
+          prop="abstract"
+          label="摘要">
+        </el-table-column>
+        <el-table-column
+          prop="content"
+          label="内容">
         </el-table-column>
         <el-table-column
           width="220"
@@ -50,25 +58,16 @@
             <el-button
               size="mini"
               @click="handleDetail(scope.$index, scope.row)">查看
-
-
-
             </el-button>
             <el-button
               size="mini"
               type="primary"
               @click="handleEdit(scope.$index, scope.row)">编辑
-
-
-
             </el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除
-
-
-
             </el-button>
           </template>
         </el-table-column>
@@ -139,25 +138,12 @@
           content: '',
           abstract: ''
         },
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        tableData: [],
         editModal: false,//新闻编辑弹出框是否可见
       }
+    },
+    mounted:function () {
+      this.getNewsList();//查询列表
     },
     methods: {
       handleSearch(){
@@ -188,10 +174,20 @@
           method:'post',
           data:this.newsForm
         }
-        console.log(obj);
         this.$httpAjax(obj).then(res=>{
             console.log(res);
             this.editModal=false;
+        })
+      },
+      getNewsList(){//查询新闻列表
+        let obj = {
+          url: '/news/get_news_list',
+          method:'post'
+        }
+        this.$httpAjax(obj).then(res=>{
+          console.log(res.data);
+          this.tableData=res.data;
+//          this.editModal=false;
         })
       }
     }
