@@ -14,7 +14,7 @@
                 <el-input v-model="keywords" placeholder="文章、资讯名称"></el-input>
               </el-col>
               <el-col :span="4" :offset="1">
-                <el-button type="primary" native-type="submit" @click="handleSearch">查询</el-button>
+                <el-button type="primary" native-type="submit" @click.prevent="handleSearch">查询</el-button>
                 <el-button type="primary" @click="openEditDialog">新增</el-button>
               </el-col>
             </form>
@@ -140,6 +140,8 @@
         },
         tableData: [],
         editModal: false,//新闻编辑弹出框是否可见
+        page_size:10,
+        page_index:1
       }
     },
     mounted:function () {
@@ -147,7 +149,9 @@
     },
     methods: {
       handleSearch(){
-        console.log('sousuo')
+        console.log('sousuo');
+        this.page_index=1;
+        this.getNewsList();//查询列表
       },
       openEditDialog(){
         console.log('sss');
@@ -180,14 +184,19 @@
         })
       },
       getNewsList(){//查询新闻列表
+        let data={
+          title:this.keywords,
+          page_size:this.page_size,
+          page_index:this.page_index
+        }
         let obj = {
           url: '/news/get_news_list',
-          method:'post'
+          method:'post',
+          data:data
         }
         this.$httpAjax(obj).then(res=>{
-          console.log(res.data);
           this.tableData=res.data;
-//          this.editModal=false;
+          this.page_index++;
         })
       }
     }
