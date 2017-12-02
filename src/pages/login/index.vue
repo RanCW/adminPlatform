@@ -6,12 +6,13 @@
       </el-col>
       <el-col :span="4" :offset="1">
         <div class="form-content">
-          <el-form :model="register_form" status-icon  ref="register_form" class="demo-ruleForm">
+          <el-form :model="register_form" status-icon ref="register_form" class="demo-ruleForm">
             <el-form-item label="" prop="user_name">
               <el-input class="input-item" v-model="register_form.user_name" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item label="" prop="password">
-              <el-input class="input-item" v-model="register_form.password" type="password"  placeholder="请输入密码"></el-input>
+              <el-input class="input-item" v-model="register_form.password" type="password"
+                        placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm('register_form')">登录</el-button>
@@ -29,45 +30,46 @@
 
 <script>
   export default{
-      data(){
-          return{
-            register_form:{
-              user_name:'',
-              password:'',
-            }
-          }
-      },
-    methods:{
+    data(){
+      return {
+        register_form: {
+          user_name: '',
+          password: '',
+        }
+      }
+    },
+    methods: {
       submitForm(refEle){//表单提交
         this.$httpAjax({
-          url:'/users/user_login',
-          method:'post',
-          data:this.register_form
-        }).then(res=>{
-          if (res.data.state=='1'){
-            this.$router.push({name:'newsIndex'})
-          }
+          url: '/users/user_login',
+          method: 'post',
+          data: this.register_form
+        }).then(res => {
+          this.$router.push({name: 'newsIndex'});
         });
       },
       toRegister(){//表单重置
-        this.$router.push({name:'register'})
+        this.$router.push({name: 'register'})
       }
     }
   }
 </script>
 
 <style scoped>
-  .login-img{
+  .login-img {
     height: 400px;
     width: 100%;
   }
-  .form-content{
+
+  .form-content {
     margin-top: 100px;
   }
-  .input-item{
+
+  .input-item {
     margin-top: 20px;
   }
-  .login-page{
+
+  .login-page {
     margin-top: 60px;
   }
 </style>

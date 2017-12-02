@@ -2,7 +2,6 @@
   <div id="components_aside_menu">
     <el-menu
       default-active="/index/news"
-      class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       :router="menuRouter"

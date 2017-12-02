@@ -1,7 +1,5 @@
 @charset "utf-8";
 .news-content{
-  min-height: 800px;
-  padding: 20px;
   background: #F2F2F2;
 }
 .bg-white{
@@ -9,6 +7,11 @@
 }
 .table-list{
   padding: 20px 20px 10px;
+}
+.el-table .cell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .table-response{
   width: 100%;

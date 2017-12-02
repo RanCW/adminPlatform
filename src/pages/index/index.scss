@@ -1,7 +1,15 @@
 @charset "utf-8";
 .left-menu{
-  height: 800px;
   overflow-x: hidden;
-  width: 100%;
   background: #434A50;
+}
+.page-index,.news-container{
+  width: 100%;
+  height: 100%;
+}
+.main-content,.left-menu{
+  min-height: 800px;
+}
+.layout-header{
+  padding: 0;
 }
