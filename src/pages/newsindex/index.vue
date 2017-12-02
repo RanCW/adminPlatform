@@ -67,25 +67,16 @@
             <el-button
               size="mini"
               @click="handleDetail(scope.$index, scope.row)">查看
-
-
-
             </el-button>
             <el-button
               size="mini"
               type="primary"
               @click="handleEdit(scope.$index, scope.row)">编辑
-
-
-
             </el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除
-
-
-
             </el-button>
           </template>
         </el-table-column>
@@ -127,7 +118,6 @@
           <el-form-item label="内容" prop="content">
             <el-input :autosize="contentSize" type="textarea" v-model="newsForm.content" placeholder="请输入内容"></el-input>
           </el-form-item>
-
         </el-form>
       </div>
       <div slot="footer" class="dialog-footer">
@@ -138,7 +128,6 @@
     <!--新闻资讯新增编辑弹出框end-->
   </div>
 </template>
-
 <script>
   import panel from '../../components/panel/index.vue'
   export default{
@@ -201,7 +190,6 @@
         }).catch(res => {
           console.log('错误咯');
         })
-
       },
       handleDelete(index, row){//删除
         console.log(index, row, '这里是删除')
